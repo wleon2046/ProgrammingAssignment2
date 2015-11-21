@@ -8,9 +8,9 @@
 ##[1,]    1    3
 ##[2,]    2    4
 
-makeCacheMatrix <- function(x = matrix()) { ## 'x' is formal parameter,'MATR' is actual parameters. 
+makeCacheMatrix <- function(x = matrix()) {    ## 'x' is formal parameter,'MATR' is actual parameters. 
     m <- NULL
-        set <- function(y) {                ## 'set' is executed by default.
+        set <- function(y) {                   ## 'set' is executed by default.
                 x <<- y
                 m <<- NULL
         }
@@ -27,23 +27,23 @@ makeCacheMatrix <- function(x = matrix()) { ## 'x' is formal parameter,'MATR' is
 ## makeCacheMatrix above. If the inverse has already been calculated,
 ## then the cachesolve should retrieve the inverse from the cache.
 
-cacheSolve <- function(x, ...) {            ## this 'x' is formal parameter,
-					              ## actual value is 'makeCacheMatrix(MATR)' above.
-        ## Return a matrix that is the inverse of 'makeCacheMatrix(MATR)'
+cacheSolve <- function(x, ...) {               ## this 'x' is formal parameter,
+					       ## actual value is 'makeCacheMatrix(MATR)' above.
+## Return a matrix that is the inverse of 'makeCacheMatrix(MATR)'
  m <- x$getsolve ()
         if(!is.null(m)) {
                 message("getting cached data") ## if 'm' is not 'null',then print
-							     ## 'getting cached data' before output.
+				               ## 'getting cached data' before output.
                 return(m)
         }
         data <- x$get()
         m <- solve(data, ...)                  ## if 'm' is 'null', then calculate
-							     ## the inverse of 'MATR' to 'm'
+					       ## the inverse of 'MATR' to 'm'
         x$setsolve(m)
         m
 }
 -----------------------------------------------------------------------------------------
-## Below is the process executed process, and the result is CORRECT!!!
+## Below is the process executed process, and the result is CORRECT!
 ##
 ## > MATR=matrix(1:4, 2, 2)
 ## > MATR
